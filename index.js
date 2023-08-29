@@ -23,9 +23,7 @@ const getFileDataFromBitBucket = async () => {
   return fileData;
 };
 
-const createFolder = () => {
-  const folderName = "./temp";
-
+const createFolder = (folderName = "./temp") => {
   try {
     if (!fs.existsSync(folderName)) {
       fs.mkdirSync(folderName);
@@ -41,14 +39,17 @@ const writeFile = (fileData) => {
     JSON.stringify(fileData, null, 2),
     (err) => {
       if (err) throw err;
-      console.log("Data written to file");
+      console.err("Data written to file");
     }
   );
 };
 
-const pushFileToBitBucket = async (fileData) => {
+const pushFileToBitBucket = async () => {
   // TODO Not ready, need to be implemented
+  fs.rmSync("./temp", { recursive: true, force: true }git );
 };
+
+const deleteFolder = () => {};
 
 (async () => {
   try {
